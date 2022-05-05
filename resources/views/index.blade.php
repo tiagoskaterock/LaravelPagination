@@ -45,30 +45,14 @@
 				
 				    <tbody>
 				
-
-
-				      <tr>
-				        <td>1</td>
-				        <td>Maria</td>				
-				        <td>Santos</td>						
-				        <td>maria@email.com</td>											          				   
-				      </tr>
-
-
-				      <tr>
-				        <td>2</td>
-				        <td>Joana</td>				
-				        <td>Souza</td>						
-				        <td>joanasouza@email.com</td>											          				   
-				      </tr>
-
-
-				      <tr>
-				        <td>3</td>
-				        <td>Pedro</td>				
-				        <td>Lima</td>						
-				        <td>pedro_limaaa@email.com</td>											          				   
-				      </tr>
+				    	@foreach($clientes as $cliente)
+					      <tr>
+					        <td>{{ $cliente->id }}</td>
+					        <td>{{ $cliente->nome }}</td>				
+					        <td>{{ $cliente->sobrenome }}</td>						
+					        <td>{{ $cliente->email }}</td>											          				   
+					      </tr>				    	
+				    	@endforeach
 
 
 				
