@@ -11,10 +11,27 @@ class ClienteControlador extends Controller
 
 
 
-
+    // LARAVEL
     public function index()
     {
         return view('index', ['clientes' => Cliente::paginate(100)]);
+    }
+
+
+
+    // JAVASCRIPT
+    public function indexJS()
+    {
+        return view('indexJS');
+    }
+
+
+
+
+    // JSON
+    public function indexJSON()
+    {
+        return Cliente::paginate(100);
     }
 
 
