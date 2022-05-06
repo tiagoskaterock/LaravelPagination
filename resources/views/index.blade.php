@@ -19,8 +19,8 @@
 
 
 
-			<div class="card-header">
-				<h5>Clientes</h5>	
+			<div class="card-header" style="display: flex; align-content: center; align-items: center;">
+				{{ $clientes->links() }}
 			</div>
 
 
@@ -28,7 +28,7 @@
 			<div class="card-body">
 
 				<div class="card-title">
-					<h5>Exibindo 5 Clientes de um total de 100</h5>
+					<h5>Exibindo {{ $per_page }} clientes de um total de {{ $total_clientes }}</h5><br>					
 				</div>
 
 				<div class="table-responsive">
@@ -67,8 +67,8 @@
 
 
 
-			<div class="card-footer">
-				<h5>Páginas</h5>
+			<div class="card-footer" style="display: flex; align-content: center; align-items: center;">
+				{{ $clientes->links() }}
 			</div>
 
 
