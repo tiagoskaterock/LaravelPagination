@@ -28,7 +28,8 @@
 			<div class="card-body">
 
 				<div class="card-title">
-					<h5>Exibindo {{ $per_page }} clientes de um total de {{ $total_clientes }}</h5><br>					
+					<h5>Exibindo {{ $clientes->count() }} de um total de {{ $clientes->total() }} clientes</h5><br>	
+					<h6>{{ $clientes->firstItem() }} a {{ $clientes->lastItem() }}</h6>				
 				</div>
 
 				<div class="table-responsive">

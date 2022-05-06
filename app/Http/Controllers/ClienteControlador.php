@@ -14,16 +14,7 @@ class ClienteControlador extends Controller
 
     public function index()
     {
-        // $clientes = Cliente::all();
-        $per_page = 100;
-        $clientes = Cliente::paginate(100);
-        $total_clientes = Cliente::count();
-
-        return view('index', [
-            'clientes' => $clientes,
-            'per_page' => $per_page, 
-            'total_clientes' => $total_clientes
-        ]);
+        return view('index', ['clientes' => Cliente::paginate(100)]);
     }
 
 
