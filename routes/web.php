@@ -16,5 +16,5 @@ Route::get('/', 'ClienteControlador@index');
 
 // Paginação com JavaScript
 Route::get('/indexJS', 'ClienteControlador@indexJS');
-Route::get('/json', 'ClienteControlador@indexJSON');
+Route::get('/json ', 'ClienteControlador@indexJSON');
 
