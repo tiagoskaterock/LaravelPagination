@@ -106,31 +106,33 @@
 	<script>
 
 		function getItemProximo(data) {
+			i = data.current_page + 1;
 			if (data.last_page == data.current_page) {
-				s = '<li class="page-item disabled"><a class="page-link" href="#">Anterior</a></li>';
+				s = '<li class="page-item disabled"><a class="page-link" pagina="' + i + '" href="#">Anterior</a></li>';
 			}
 			else {
-				s = '<li class="page-item"><a class="page-link" href="#">Próximo</a></li>';
+				s = '<li class="page-item"><a class="page-link" pagina="' + i + '" href="#">Próximo</a></li>';
 			}
 			return s;
 		}
 
 		function getItemAnterior(data) {
+			i = data.current_page - 1;
 			if (1 == data.current_page) {
-				s = '<li class="page-item disabled"><a class="page-link" href="#">Anterior</a></li>';
+				s = '<li class="page-item disabled"><a class="page-link" pagina="' + i + '" href="#">Anterior</a></li>';
 			}
 			else {
-				s = '<li class="page-item"><a class="page-link" href="#">Anterior</a></li>';
+				s = '<li class="page-item"><a class="page-link" pagina="' + i + '" href="#">Anterior</a></li>';
 			}
 			return s;
 		}
 
 		function getItem(data, i) {
 			if (i == data.current_page) {
-				s = '<li class="page-item active"><a class="page-link" href="#">' + i + '</a></li>';
+				s = '<li class="page-item active"><a class="page-link" pagina="' + i + '" href="#">' + i + '</a></li>';
 			}
 			else {
-				s = '<li class="page-item"><a class="page-link" href="#">' + i + '</a></li>';
+				s = '<li class="page-item"><a class="page-link" pagina="' + i + '" href="#">' + i + '</a></li>';
 			}
 			return s;
 		}
@@ -141,16 +143,34 @@
 
 			n = 10;
 
-			if (data.current_page - n/5 <= 1) {
+			if (data.current_page - n/5 < 4) {
 				inicio = 1;
+				// onsole.log('primeiro');
 			}
+			
 			else if (data.last_page - data.current_page < n) {
 				inicio = data.last_page - n + 1;
-			console.log(data);
+				console.log('segundo');		
 			}
+
+			/*
+			else if (data.last_page - data.current_page < n) {
+				inicio = data.last_page - n + 1;
+				// console.log('segundo');		
+			}
+			*/
+
 			else {
 				inicio = data.current_page - n / 2;
+				// console.log('terceiro');			
 			}
+
+			/*
+			console.log('current: ' + data.current_page);							
+			console.log('last: ' + data.last_page);							
+			console.log('n: ' + n);	
+			console.log('calculo: ' + (data.current_page - n/5));	
+			*/
 
 
 			fim = inicio + n - 1;
@@ -180,16 +200,19 @@
 			}
 		}
 
-		function CarregarClientes(pagina) {
+		function carregarClientes(pagina) {
 			$.get('/json', {page: pagina}, function(resp) { 
 				console.log(resp);
 				montarTabela(resp);
 				montarPaginator(resp);
+
+				$("#paginator>ul>li>a").click(function(){carregarClientes($(this).attr('pagina'))});
+
 			});			
 		}
 
 		$(function() {
-			CarregarClientes(1);
+			carregarClientes(25);
 		});
 
 	</script>
