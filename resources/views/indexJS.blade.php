@@ -105,6 +105,26 @@
 	{{-- AJAX DA PAGINAÇÃO --}}
 	<script>
 
+		function getItemProximo(data) {
+			if (data.last_page == data.current_page) {
+				s = '<li class="page-item disabled"><a class="page-link" href="#">Anterior</a></li>';
+			}
+			else {
+				s = '<li class="page-item"><a class="page-link" href="#">Próximo</a></li>';
+			}
+			return s;
+		}
+
+		function getItemAnterior(data) {
+			if (1 == data.current_page) {
+				s = '<li class="page-item disabled"><a class="page-link" href="#">Anterior</a></li>';
+			}
+			else {
+				s = '<li class="page-item"><a class="page-link" href="#">Anterior</a></li>';
+			}
+			return s;
+		}
+
 		function getItem(data, i) {
 			if (i == data.current_page) {
 				s = '<li class="page-item active"><a class="page-link" href="#">' + i + '</a></li>';
@@ -116,10 +136,17 @@
 		}
 
 		function montarPaginator(data) {
-			for (var i = 1; i < data.data.length; i++) {
+			$("#paginator>ul>li").remove();
+			$("#paginator>ul").append(getItemAnterior(data));
+
+			inicio = 1;
+			fim = 10;
+
+			for (var i = inicio; i <= fim; i++) {
 				s = getItem(data, i);
 				$("#paginator>ul").append(s);
 			}
+			$("#paginator>ul").append(getItemProximo(data));
 		}
 
 		function montarLinha(cliente) {
