@@ -19,8 +19,27 @@
 
 
 
-			<div class="card-header" style="display: flex; align-content: center; align-items: center;">
-				Paginação
+			<div class="card-header">
+
+				<nav id="paginator">
+				  <ul class="pagination" style="margin: 0 auto">
+
+				  	{{--
+				    <li class="page-item disabled">
+				      <a class="page-link" href="#" tabindex="-1">Previous</a>
+				    </li>
+				    <li class="page-item"><a class="page-link" href="#">1</a></li>
+				    <li class="page-item active">
+				      <a class="page-link" href="#">2</a>
+				    </li>
+				    <li class="page-item"><a class="page-link" href="#">3</a></li>
+				    <li class="page-item">
+				      <a class="page-link" href="#">Next</a>
+				    </li>
+				    --}}
+				  </ul>
+				</nav>
+
 			</div>
 
 
@@ -65,7 +84,11 @@
 
 
 			<div class="card-footer" style="display: flex; align-content: center; align-items: center;">
-				Paginação
+				
+					paginação do footer
+
+
+
 			</div>
 
 
@@ -81,6 +104,23 @@
 
 	{{-- AJAX DA PAGINAÇÃO --}}
 	<script>
+
+		function getItem(data, i) {
+			if (i == data.current_page) {
+				s = '<li class="page-item active"><a class="page-link" href="#">' + i + '</a></li>';
+			}
+			else {
+				s = '<li class="page-item"><a class="page-link" href="#">' + i + '</a></li>';
+			}
+			return s;
+		}
+
+		function montarPaginator(data) {
+			for (var i = 1; i < data.data.length; i++) {
+				s = getItem(data, i);
+				$("#paginator>ul").append(s);
+			}
+		}
 
 		function montarLinha(cliente) {
 			return "" +
@@ -104,6 +144,7 @@
 			$.get('/json', {page: pagina}, function(resp) { 
 				console.log(resp);
 				montarTabela(resp);
+				montarPaginator(resp);
 			});			
 		}
 
