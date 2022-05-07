@@ -31,7 +31,7 @@ class ClienteControlador extends Controller
     // JSON
     public function indexJSON()
     {
-        return Cliente::paginate(100);
+        return Cliente::paginate(10);
     }
 
 

@@ -139,8 +139,21 @@
 			$("#paginator>ul>li").remove();
 			$("#paginator>ul").append(getItemAnterior(data));
 
-			inicio = 1;
-			fim = 10;
+			n = 10;
+
+			if (data.current_page - n/5 <= 1) {
+				inicio = 1;
+			}
+			else if (data.last_page - data.current_page < n) {
+				inicio = data.last_page - n + 1;
+			console.log(data);
+			}
+			else {
+				inicio = data.current_page - n / 2;
+			}
+
+
+			fim = inicio + n - 1;
 
 			for (var i = inicio; i <= fim; i++) {
 				s = getItem(data, i);
@@ -176,7 +189,7 @@
 		}
 
 		$(function() {
-			CarregarClientes(3);
+			CarregarClientes(1);
 		});
 
 	</script>
