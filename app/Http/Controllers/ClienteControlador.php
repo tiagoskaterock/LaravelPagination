@@ -32,7 +32,7 @@ class ClienteControlador extends Controller
     public function indexJSON()
     {
         // número de clientes por página
-        return Cliente::paginate(50);
+        return Cliente::paginate(10);
 
     }
 

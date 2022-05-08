@@ -4,4 +4,3 @@ Este projeto consiste em demonstrar o desenvolvimento de um sistema de paginaç�
 Depois disso, é utilizado o sistema de paginação com JavaScript e Ajax, deixando o resultado final mais agradável para o usuário.
 
 ![site](img/1.png)
-![site](img/2.png)

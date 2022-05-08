@@ -21,24 +21,9 @@
 
 			<div class="card-header">
 
-				<nav id="paginator">
-				  <ul class="pagination" style="margin: 0 auto">
-
-				  	{{--
-				    <li class="page-item disabled">
-				      <a class="page-link" href="javascript:void(0)" tabindex="-1">Previous</a>
-				    </li>
-				    <li class="page-item"><a class="page-link" href="javascript:void(0)">1</a></li>
-				    <li class="page-item active">
-				      <a class="page-link" href="javascript:void(0)">2</a>
-				    </li>
-				    <li class="page-item"><a class="page-link" href="javascript:void(0)">3</a></li>
-				    <li class="page-item">
-				      <a class="page-link" href="javascript:void(0)">Next</a>
-				    </li>
-				    --}}
-				  </ul>
-				</nav>
+				<h5>
+					Paginação com CSS, BootStrap, PHP, Laravel, JavaScript, jQuery, Ajax e MySQL
+				</h5>
 
 			</div>
 
@@ -85,7 +70,24 @@
 
 			<div class="card-footer" style="display: flex; align-content: center; align-items: center;">
 				
-					paginação do footer
+				<nav id="paginator">
+				  <ul class="pagination" style="margin: 0 auto">
+
+				  	{{--
+				    <li class="page-item disabled">
+				      <a class="page-link" href="javascript:void(0)" tabindex="-1">Previous</a>
+				    </li>
+				    <li class="page-item"><a class="page-link" href="javascript:void(0)">1</a></li>
+				    <li class="page-item active">
+				      <a class="page-link" href="javascript:void(0)">2</a>
+				    </li>
+				    <li class="page-item"><a class="page-link" href="javascript:void(0)">3</a></li>
+				    <li class="page-item">
+				      <a class="page-link" href="javascript:void(0)">Next</a>
+				    </li>
+				    --}}
+				  </ul>
+				</nav>
 
 
 
