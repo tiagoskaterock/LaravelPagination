@@ -26,15 +26,15 @@
 
 				  	{{--
 				    <li class="page-item disabled">
-				      <a class="page-link" href="#" tabindex="-1">Previous</a>
+				      <a class="page-link" href="javascript:void(0)" tabindex="-1">Previous</a>
 				    </li>
-				    <li class="page-item"><a class="page-link" href="#">1</a></li>
+				    <li class="page-item"><a class="page-link" href="javascript:void(0)">1</a></li>
 				    <li class="page-item active">
-				      <a class="page-link" href="#">2</a>
+				      <a class="page-link" href="javascript:void(0)">2</a>
 				    </li>
-				    <li class="page-item"><a class="page-link" href="#">3</a></li>
+				    <li class="page-item"><a class="page-link" href="javascript:void(0)">3</a></li>
 				    <li class="page-item">
-				      <a class="page-link" href="#">Next</a>
+				      <a class="page-link" href="javascript:void(0)">Next</a>
 				    </li>
 				    --}}
 				  </ul>
@@ -46,7 +46,7 @@
 
 			<div class="card-body">
 
-				<div class="card-title">
+				<div class="card-title" id="card-title">
 					<h5>Exibindo 69 de um total de 6969 clientes</h5><br>	
 					<h6>69 a 96</h6>				
 				</div>
@@ -108,10 +108,10 @@
 		function getItemProximo(data) {
 			i = data.current_page + 1;
 			if (data.last_page == data.current_page) {
-				s = '<li class="page-item disabled"><a class="page-link" pagina="' + i + '" href="#">Anterior</a></li>';
+				s = '<li class="page-item disabled"><a class="page-link" pagina="' + i + '" href="javascript:void(0)">Anterior</a></li>';
 			}
 			else {
-				s = '<li class="page-item"><a class="page-link" pagina="' + i + '" href="#">Próximo</a></li>';
+				s = '<li class="page-item"><a class="page-link" pagina="' + i + '" href="javascript:void(0)">Próximo</a></li>';
 			}
 			return s;
 		}
@@ -119,20 +119,20 @@
 		function getItemAnterior(data) {
 			i = data.current_page - 1;
 			if (1 == data.current_page) {
-				s = '<li class="page-item disabled"><a class="page-link" pagina="' + i + '" href="#">Anterior</a></li>';
+				s = '<li class="page-item disabled"><a class="page-link" pagina="' + i + '" href="javascript:void(0)">Anterior</a></li>';
 			}
 			else {
-				s = '<li class="page-item"><a class="page-link" pagina="' + i + '" href="#">Anterior</a></li>';
+				s = '<li class="page-item"><a class="page-link" pagina="' + i + '" href="javascript:void(0)">Anterior</a></li>';
 			}
 			return s;
 		}
 
 		function getItem(data, i) {
 			if (i == data.current_page) {
-				s = '<li class="page-item active"><a class="page-link" pagina="' + i + '" href="#">' + i + '</a></li>';
+				s = '<li class="page-item active"><a class="page-link" pagina="' + i + '" href="javascript:void(0)">' + i + '</a></li>';
 			}
 			else {
-				s = '<li class="page-item"><a class="page-link" pagina="' + i + '" href="#">' + i + '</a></li>';
+				s = '<li class="page-item"><a class="page-link" pagina="' + i + '" href="javascript:void(0)">' + i + '</a></li>';
 			}
 			return s;
 		}
@@ -141,9 +141,10 @@
 			$("#paginator>ul>li").remove();
 			$("#paginator>ul").append(getItemAnterior(data));
 
+			// número de páginas mostradas na paginação
 			n = 10;
 
-			if (data.current_page - n/5 < 4) {
+			if (data.current_page - n/2 <= 1) {
 				inicio = 1;
 				// onsole.log('primeiro');
 			}
@@ -208,11 +209,14 @@
 
 				$("#paginator>ul>li>a").click(function(){carregarClientes($(this).attr('pagina'))});
 
+				$("#card-title").html("Exibindo " + resp.per_page + " clientes de " + resp.total + " ( " + resp.from + " a " + resp.to + " ) ")
+
 			});			
 		}
 
 		$(function() {
-			carregarClientes(25);
+			// página inicial de carregamento da paginação
+			carregarClientes(3);
 		});
 
 	</script>
